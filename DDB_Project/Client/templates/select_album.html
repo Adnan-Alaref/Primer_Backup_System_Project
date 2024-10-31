@@ -1,0 +1,62 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#Albums {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#Albums td, #Albums th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#Albums tr:nth-child(even){background-color: #f2f2f2;}
+
+#Albums tr:hover {background-color: #ddd;}
+
+#Albums th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center>
+
+    <h1>All Albums</h1>
+</center>
+
+<table id="Albums">
+  <tr>
+    <th>Album_ID</th>
+    <th>Album_Title</th>
+    <th>Artist_ID</th>
+    <th>Album_Price</th>
+  </tr>
+ 
+    {{range .AllAlbums}}
+        <tr>
+        <td>{{.ID}}</td>
+        <td>{{.Title}}</td>
+        <td>{{.Artist_ID}}</td>
+        <td>{{.Price}}</td>
+    </tr>
+    {{end}}
+  
+</table>
+
+</body>
+</html>
+
+

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Simple Sidebar - Start Bootstrap Template</title>
+  <style>
+    .dropbtn {
+      background-color: #3498DB;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: #2980B9;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background-color: #ddd;
+    }
+
+    .show {
+      display: block;
+    }
+    
+    .btn {
+      background-color: #2196F3;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      outline: none;
+    }
+
+    .dropdown {
+      position: absolute;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 12px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .btn:hover,
+    .dropdown:hover .btn {
+      background-color: #0b7dda;
+    }
+  </style>
+  <!--</head>
+            <body>-->
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon"
+    href="C:\Users\Specialist\Downloads\Compressed\startbootstrap-simple-sidebar-gh-pages\assets\favicon.ico" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fault m-0 p-0">
+    <div class="row m-0 p-0">
+      <div class="col-3 col-md-2 m-0 p-0" id="page-content-wrapper">
+        <div class="border-end bg-white" id="sidebar-wrapper">
+          <div class="sidebar-heading border-bottom bg-light p-3">Comand On Database</div>
+          <div class="list-group list-group-flush p-2 ">
+
+
+            <button class="dropbtn">Insert</button>
+            <div class="dropdown">
+              <button class="btn" style="border-left:1px solid #0d8bf2">
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/create_album">Album</a>
+                <a href="/create_artist">Artist</a>
+              </div>
+            </div>
+
+            <button class="dropbtn">Delete</button>
+            <div class="dropdown">
+              <button class="btn" style="border-left:1px solid #0d8bf2">
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/delete_album">Album </a>
+                <a href="/delete_artist">Artist</a>
+              </div>
+            </div>
+
+
+            <button class="dropbtn">Upate</button>
+            <div class="dropdown">
+              <button class="btn" style="border-left:1px solid #0d8bf2">
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/update_album">Album </a>
+                <a href="/update_artist">Artist</a>
+              </div>
+            </div>
+
+            <button class="dropbtn">Select All</button>
+            <div class="dropdown">
+              <button class="btn" style="border-left:1px solid #0d8bf2">
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/select_album">Album </a>
+                <a href="/select_artist">Artist</a>
+              </div>
+            </div>
+
+          
+            <script>
+              
+              let sidebar = document.getElementById("sidebar-wrapper");
+              let wrapper = document.getElementById("wrapper");
+              const handleClik = ()=>{
+                  sidebar.classList.toggle("hide");
+                  wrapper.classList.toggle("w-100");
+              }
+                function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+              }
+
+              // Close the dropdown if the user clicks outside of it
+              window.onclick = function(event) {
+              if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                  var openDropdown = dropdowns[i];
+                  if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                  }
+                }
+              }
+            }
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="col-9 col-md-10 m-0 p-0 d-flex" id="wrapper">
+        <div id="page-content-wrapper">
+          <!-- Top navigation-->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+              <button onclick="handleClik()" class="btn btn-primary" id="sidebarToggle">Comand Menu</button>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                      <button class="btn btn-black" ><a class="nav-link" href="./index.html">Home</a></button>
+                      <b>
+                          
+                      </b>
+                      <button class="btn btn-black"><a class="nav-link" href="#!">About</a></button>
+                      
+                  </ul>
+              </div>
+           </div>
+          </nav>
+          <!-- Page content-->
+          <div class="container-fluid">
+            <h1 class="mt-4">Recording Album & Artist Database</h1>
+            <p>The starting state of the menu will appear Inserting Or Adding adata in album table,will appear Update
+              data on Album table</p>
+            <p>will appear Delet data from table,and will appear Selecting all datat in something table</p>
+            <p>
+              Make sure to keep all page content within the
+              <code>#page-content-wrapper</code>
+              . The top navbar is optional, and just for demonstration. Just create an element with the
+              <code>#sidebarToggle</code>
+              ID which will toggle the menu when clicked.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <!-- Core theme JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

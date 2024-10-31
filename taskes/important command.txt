@@ -1,0 +1,4 @@
+
+go mod init example.com/module
+go mod tidy
+

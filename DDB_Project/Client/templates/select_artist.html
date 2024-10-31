@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#Artist {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#Artist td, #Artist th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#Artist tr:nth-child(even){background-color: #f2f2f2;}
+
+#Artist tr:hover {background-color: #ddd;}
+
+#Artist th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<center><h1>All Artist</h1></center>
+
+<table id="Artist">
+  <tr>
+    <th>Artist_ID</th>
+    <th>Artist_Name</th>
+    <th>Artist_Email</th>
+  </tr>
+ 
+    {{range .AllArtists}}
+        <tr>
+        <td>{{.Artist_ID}}</td>
+        <td>{{.Artist_Name}}</td>
+        <td>{{.Artist_Email}}</td>
+    </tr>
+    {{end}}
+  
+</table>
+
+</body>
+</html>
+
+

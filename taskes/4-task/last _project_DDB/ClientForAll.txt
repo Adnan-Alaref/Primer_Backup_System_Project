@@ -1,0 +1,169 @@
+/*
+.
+.
+CLIENT CODE
+.
+.
+*/
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	_ "github.com/go-sql-driver/mysql"
+)
+
+type Album struct {
+	ID    int64
+	Title string
+	// Artist string
+	// Price string
+}
+
+// var db *sql.DB
+var err error
+var conn net.Conn
+
+func main() {
+	///////////////////////////////////////////////////connection
+	conn, err := net.Dial("tcp", "192.168.43.103:3000")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	_, err = conn.Write([]byte("Hello Server!"))
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+
+	///////////////////////////////////////////////////network programing
+
+	for {
+		var choose string
+		fmt.Println("enter 1 for insert & 2  to delete by artist Name")
+		fmt.Scan(&choose)
+
+		_, err = conn.Write([]byte(choose))
+		if choose == "1" {
+			fmt.Println("enter the Title ")
+			var _Title string
+			fmt.Scan(&_Title)
+			// albID, err := addAlbum(db, Album{
+			// 	Title: _Title,
+			// })
+			// if err != nil {
+			// 	panic(err.Error())
+			// }
+			// fmt.Printf("ID of added album: %v\n", albID)
+			// fmt.Println("succussfuly insert  sir ")
+			fmt.Println("send command 1and data  to servser ")
+
+			_, err = conn.Write([]byte(_Title))
+			if err != nil {
+				log.Fatalln(err)
+			}
+		} else if choose == "2" {
+			fmt.Println("Inter id of album")
+			var id string
+			fmt.Scan(&id)
+
+			// x, err := strconv.Atoi(id)
+			// DeleteAlbum(x)
+
+			_, err = conn.Write([]byte(id))
+
+			if err != nil {
+				log.Fatalln(err)
+			}
+		} else if choose == "3" {
+			fmt.Println("Inter id of album")
+			var id, _Title string
+			fmt.Scan(&id)
+			fmt.Println("Inter title of album")
+			fmt.Scan(&_Title)
+			// x, err := strconv.Atoi(id)
+			// Update_Album(x, _Title)
+
+			_, err = conn.Write([]byte(id))
+			_, err = conn.Write([]byte(_Title))
+			if err != nil {
+				log.Fatalln(err)
+			}
+		}
+	}
+}
+
+// func ReadFromServer(conn net.Conn) string {
+// 	buffer_command := make([]byte, 1400)
+// 	dataSize, err := conn.Read(buffer_command)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	command := string(buffer_command[:dataSize])
+// 	return command
+// }
+// func addAlbum(db *sql.DB, alb Album) (int64, error) {
+// 	result, err := db.Exec("INSERT INTO album (title) VALUES (?)", alb.Title)
+// 	if err != nil {
+// 		return 0, fmt.Errorf("addAlbum: %v", err)
+// 	}
+// 	id, err := result.LastInsertId()
+// 	if err != nil {
+// 		return 0, fmt.Errorf("addAlbum: %v", err)
+// 	}
+// 	return id, nil
+// }
+// func GetAllAlbums() []Album {
+// 	row, err := db.Query("select * from album")
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	alb := Album{}      //Create instanc from Album
+// 	albums := []Album{} //Create Array of Album
+// 	for row.Next() {
+// 		err := row.Scan(&alb.ID, &alb.Title)
+// 		if err != nil {
+// 			log.Fatal(err)
+// 		}
+// 		albums = append(albums, alb)
+// 	}
+// 	return albums
+// }
+
+// func Update_Album(id int, title string) {
+// 	statment, err := db.Prepare("update recordings.album set Title=? where ID=?")
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	r, err := statment.Exec(title, id)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	affectedRow, err := r.RowsAffected()
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	} else {
+// 		fmt.Printf("Query OK, %d rows affected.\n", affectedRow)
+// 		fmt.Println("Rows matched: 1  Changed: 1  Warnings: 0")
+
+// 	}
+// }
+// func DeleteAlbum(id int) {
+// 	statment, err := db.Prepare("delete from album where ID=?")
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	r, err := statment.Exec(id)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	affectedRow, err := r.RowsAffected()
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	} else {
+// 		fmt.Printf("Query OK, %d rows affected.\n", affectedRow)
+// 		fmt.Println("Rows matched: 1  Changed: 1  Warnings: 0")
+
+// 	}
+//}
